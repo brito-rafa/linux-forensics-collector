@@ -4,7 +4,7 @@
 
 MYDIR=/tmp
 TODAY=`date +%y%m%d`
-MYNAME="CATE CitiHPC Forensic v2.0"
+MYNAME="CATE CitiHPC Forensic v2.1"
 mkdir ${MYDIR}/citihpc-forensic 2>/dev/null
 cd ${MYDIR}/citihpc-forensic
 mkdir $TODAY 2>/dev/null
