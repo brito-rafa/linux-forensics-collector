@@ -195,6 +195,25 @@ if [ -e /opt/hp/conrep/conrep ]; then
 	echo "Info: end of /opt/hp/conrep/conrep -x /opt/hp/conrep/conrep.xml -s -f $CONREPXML ... `date`" >> $LOGSTATIC
 fi
 
+echo "Info: checking if gpfs exists ..." >> $LOGSTATIC
+if [ -e /usr/lpp/mmfs/bin/mmlscluster ]; then
+
+	echo "Info: mmlscluster ... `date`" >> $LOGSTATIC
+	/usr/lpp/mmfs/bin/mmlscluster >> $LOGSTATIC
+	echo "Info: end of mmlscluster ..." >> $LOGSTATIC
+
+	echo "Info: mmlsconfig ... `date`" >> $LOGSTATIC
+	/usr/lpp/mmfs/bin/mmlsconfig >> $LOGSTATIC
+	echo "Info: end of mmlsconfig ..." >> $LOGSTATIC
+
+	echo "Info: mmlsmgr ... `date`" >> $LOGSTATIC
+	/usr/lpp/mmfs/bin/mmlsmgr >> $LOGSTATIC
+	echo "Info: end of mmlsmgr ..." >> $LOGSTATIC
+
+	echo "Info: mmlsnsd ... `date`" >> $LOGSTATIC
+	/usr/lpp/mmfs/bin/mmlsnsd >> $LOGSTATIC
+	echo "Info: end of mmlsnsd ..." >> $LOGSTATIC
+fi
 
 echo "Info: end of static collection at `date` " >> $LOGSTATIC
 echo "Info: end of static collection at `date` "
@@ -347,6 +366,16 @@ do
 	arp -a >> $LOG
 	echo "Info: end of arp -a" >> $LOG
 			
+	if [ -e /usr/lpp/mmfs/bin/mmdiag ]; then
+
+		echo "Info: mmdiag --iohist - gpfs history ... `date`" >> $LOG
+		/usr/lpp/mmfs/bin/mmdiag  --iohist >> $LOG
+		echo "Info: end of mmdiag --iohist - ... `date`" >> $LOG
+
+		echo "Info: mmdiag --waiters - gpfs waiters ... `date`" >> $LOG
+		/usr/lpp/mmfs/bin/mmdiag  --waiters >> $LOG
+		echo "Info: end of mmdiag --waiters - ... `date`" >> $LOG
+	fi
 	MYEND=`date +%y%m%d-%H%M%S`
 	echo "Info: end of interaction at $MYEND ..." >> $LOG
 	gzip $LOG

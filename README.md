@@ -2,11 +2,13 @@ citihpc-forensics-collector
 ===========================
 
 This is the repo for the CitiHPC Forensics Collector.
-This tool collects static and dynamic data from a server. The dynamic data is collected by a userdefined interval and interactions.
+
+This tool collects static and dynamic data from a server. The dynamic data is collected by a user rdefined interval and interactions.
 
 
 revision history
 =======
+```
 written by  Rafael Brito originally created on 09/27/2012
 0.1 - created
 0.2 - added thread info 02/08/2013
@@ -50,4 +52,5 @@ written by  Rafael Brito originally created on 09/27/2012
 1.8a - adding "p" on sar command to show disks instead of devices - 07/23/2014
 1.9 - supressing some errors - 07/24/2014
 2.0 - Integrating script on git
-
+2.1 - added gpfs metrics collections
+```
