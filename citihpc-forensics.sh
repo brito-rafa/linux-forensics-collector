@@ -90,11 +90,11 @@ cat /proc/cpuinfo >> $LOGSTATIC
 echo "Info: end of /proc/cpuinfo ..." >> $LOGSTATIC
 
 echo "Info: lscpu ... `date`" >> $LOGSTATIC
-lscpu >> $LOGSTATIC
+lscpu 2>/dev/null >> $LOGSTATIC
 echo "Info: end of lscpu ..." >> $LOGSTATIC
 	
 echo "Info: lscpu -p ... `date`" >> $LOGSTATIC
-lscpu -p >> $LOGSTATIC
+lscpu -p 2>/dev/null >> $LOGSTATIC
 echo "Info: end of lscpu -p ..." >> $LOGSTATIC
 
 echo "Info: /proc/partitions ... `date`" >> $LOGSTATIC
@@ -259,7 +259,7 @@ do
 			if [ -d /proc/${arr[$PIDCOUNTER]}/task/${arr[$LWPCOUNTER]} ]; then
 				cat /proc/${arr[$PIDCOUNTER]}/task/${arr[$LWPCOUNTER]}/status >> $LOG
 				echo "Stack of PID ${arr[$PIDCOUNTER]} and LWP ${arr[$LWPCOUNTER]} :" >> $LOG
-				cat /proc/${arr[$PIDCOUNTER]}/task/${arr[$LWPCOUNTER]}/stack >> $LOG
+				cat /proc/${arr[$PIDCOUNTER]}/task/${arr[$LWPCOUNTER]}/stack  2>/dev/null >> $LOG
 				echo "Info: end of status/stack of PID ${arr[$PIDCOUNTER]} and LWP ${arr[$LWPCOUNTER]}" >> $LOG
 			else
 				echo "Info: Can't find more info about PID ${arr[$PIDCOUNTER]} and LWP ${arr[$LWPCOUNTER]}. It was a short-lived process or lwp..." >> $LOG
@@ -311,7 +311,7 @@ do
 	echo "Info: end of free ... `date`" >> $LOG
 	
 	echo "Info: iostat -t -N -n -x 1 2... `date`" >> $LOG
-	iostat -t -N -n -x 1 2 >> $LOG
+	iostat -t -N -n -x 1 2 2>/dev/null >> $LOG
 	echo "Info: end of iostat -t -N -n -x 1 2 (nfs) ..." >> $LOG
 		
 	echo "Info:  df -h ... `date`" >> $LOG
@@ -319,7 +319,7 @@ do
 	echo "Info: end of  df -h ... `date`" >> $LOG
 
 	echo "Info:  df --total ... `date`" >> $LOG
-	df --total >> $LOG
+	df --total 2>/dev/null >> $LOG
 	echo "Info: end of  df --total ... `date`" >> $LOG
 	
 	echo "Info:  df --total -i  - display inodes ... `date`" >> $LOG
