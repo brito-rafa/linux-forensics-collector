@@ -142,19 +142,19 @@ ip addr >> $LOGSTATIC
 echo "Info: end of ip addr ..." >> $LOGSTATIC
 
 echo "Info: ethtool - settings of the network interfaces ... `date`" >> $LOGSTATIC
-for i in `ifconfig | grep eth | awk '{print $1}'`; do ethtool $i; done >> $LOGSTATIC
+for i in `ifconfig -a | grep eth | awk '{print $1}'`; do ethtool $i; done >> $LOGSTATIC
 echo "Info: end of ethtool" >> $LOGSTATIC
 
 echo "Info: ethtool -i - network driver ... `date`" >> $LOGSTATIC
-for i in `ifconfig | grep eth | awk '{print $1}'`; do echo "network driver $i"; ethtool -i $i 2>/dev/null; done >> $LOGSTATIC
+for i in `ifconfig -a | grep eth | awk '{print $1}'`; do echo "network driver $i"; ethtool -i $i 2>/dev/null; done >> $LOGSTATIC
 echo "Info: end of ethtool -i" >> $LOGSTATIC
 
 echo "Info: ethtool -g - ring buffers ... `date`" >> $LOGSTATIC
-for i in `ifconfig | grep eth | awk '{print $1}'`; do ethtool -g $i 2>/dev/null; done >> $LOGSTATIC
+for i in `ifconfig -a | grep eth | awk '{print $1}'`; do ethtool -g $i 2>/dev/null; done >> $LOGSTATIC
 echo "Info: end of ethtool -g" >> $LOGSTATIC
 
 echo "Info: ethtool -k - segment offload ... `date`" >> $LOGSTATIC
-for i in `ifconfig | grep eth | awk '{print $1}'`; do ethtool -k $i 2>/dev/null; done >> $LOGSTATIC
+for i in `ifconfig -a | grep eth | awk '{print $1}'`; do ethtool -k $i 2>/dev/null; done >> $LOGSTATIC
 echo "Info: end of ethtool -k" >> $LOGSTATIC
 
 echo "Info: ifconfig -a  ... `date`" >> $LOGSTATIC
