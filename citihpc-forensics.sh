@@ -146,7 +146,7 @@ for i in `ifconfig | grep eth | awk '{print $1}'`; do ethtool $i; done >> $LOGST
 echo "Info: end of ethtool" >> $LOGSTATIC
 
 echo "Info: ethtool -i - network driver ... `date`" >> $LOGSTATIC
-for i in `ifconfig | grep eth | awk '{print $1}'`; do echo $i; ethtool -i $i 2>/dev/null; done >> $LOGSTATIC
+for i in `ifconfig | grep eth | awk '{print $1}'`; do echo "network driver $i"; ethtool -i $i 2>/dev/null; done >> $LOGSTATIC
 echo "Info: end of ethtool -i" >> $LOGSTATIC
 
 echo "Info: ethtool -g - ring buffers ... `date`" >> $LOGSTATIC
