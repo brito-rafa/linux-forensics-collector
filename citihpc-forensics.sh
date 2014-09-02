@@ -170,8 +170,20 @@ grep -i err /var/log/messages | grep -v ssh >> $LOGSTATIC
 echo "Info: end of /var/log/messages errors ... `date`" >> $LOGSTATIC
 
 echo "Info: rpm -qa ... `date`" >> $LOGSTATIC
-rpm -qa >> $LOGSTATIC
+rpm -qa | sort >> $LOGSTATIC
 echo "Info: end of rpm -qa ... `date`" >> $LOGSTATIC
+
+echo "Info: /etc/ntp.conf ... `date`" >> $LOGSTATIC
+cat /etc/ntp.conf >> $LOGSTATIC
+echo "Info: end of /etc/ntp.conf  ... `date`" >> $LOGSTATIC
+
+echo "Info: /etc/yum.conf ... `date`" >> $LOGSTATIC
+cat /etc/yum.conf >> $LOGSTATIC
+echo "Info: end of /etc/yum.conf  ... `date`" >> $LOGSTATIC
+
+echo "Info: /boot/grub/grub.conf ... `date`" >> $LOGSTATIC
+cat /boot/grub/grub.conf >> $LOGSTATIC
+echo "Info: end of /boot/grub/grub.conf  ... `date`" >> $LOGSTATIC
 
 echo "Info: checking if multipath exists ..." >> $LOGSTATIC
 if [ -e /sbin/multipath ]; then
