@@ -53,5 +53,6 @@ written by  Rafael Brito originally created on 09/27/2012
 1.9 - supressing some errors - 07/24/2014
 2.0 - Integrating script on git
 2.1 - added gpfs metrics collections
-2.2 - Added ntp.conf, yum.conf and grub.conf. rpm -qa is sorted for better parsing. 09/02/2014
+2.2 - suppress errors from RHEL5 execution
+2.3 - Added ntp.conf, yum.conf and grub.conf. rpm -qa is sorted for better parsing. 09/02/2014
 ```
