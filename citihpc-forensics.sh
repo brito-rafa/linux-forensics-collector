@@ -4,7 +4,7 @@
 
 MYDIR=/tmp
 TODAY=`date +%y%m%d`
-MYNAME="CATE CitiHPC Forensic v2.1"
+MYNAME="CATE CitiHPC Forensic v2.3"
 mkdir ${MYDIR}/citihpc-forensic 2>/dev/null
 cd ${MYDIR}/citihpc-forensic
 mkdir $TODAY 2>/dev/null
@@ -184,6 +184,20 @@ echo "Info: end of /etc/yum.conf  ... `date`" >> $LOGSTATIC
 echo "Info: /boot/grub/grub.conf ... `date`" >> $LOGSTATIC
 cat /boot/grub/grub.conf >> $LOGSTATIC
 echo "Info: end of /boot/grub/grub.conf  ... `date`" >> $LOGSTATIC
+
+echo "Info: /etc/modprobe.conf ... `date`" >> $LOGSTATIC
+cat /etc/modprobe.conf 2>/dev/null >> $LOGSTATIC
+echo "Info: end of /etc/modprobe.conf" >> $LOGSTATIC
+
+echo "Info: /etc/modprobe.d ... `date`" >> $LOGSTATIC
+if [ -d  /etc/modprobe.d/ ]; then
+	for i in `ls /etc/modprobe.d/`; do
+		echo "Info: /etc/modprobe.d/$i" >> $LOGSTATIC
+		cat /etc/modprobe.d/$i >> $LOGSTATIC
+		echo "Info: end of /etc/modprobe.d/$i" >> $LOGSTATIC
+	done
+fi
+echo "Info: end of /etc/modprobe.d ... `date`" >> $LOGSTATIC
 
 echo "Info: checking if multipath exists ..." >> $LOGSTATIC
 if [ -e /sbin/multipath ]; then
