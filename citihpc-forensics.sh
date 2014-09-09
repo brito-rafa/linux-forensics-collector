@@ -392,6 +392,10 @@ do
 	arp -a >> $LOG
 	echo "Info: end of arp -a" >> $LOG
 			
+	echo "Info: lsof -n ... `date`" >> $LOG
+	lsof -n 2>/dev/null >> $LOG
+	echo "Info: end of lsof -n" >> $LOG
+
 	if [ -e /usr/lpp/mmfs/bin/mmdiag ]; then
 
 		echo "Info: mmdiag --iohist - gpfs history ... `date`" >> $LOG
