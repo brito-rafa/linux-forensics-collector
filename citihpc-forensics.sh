@@ -1,30 +1,43 @@
 # CitiHPC-forensic.sh
 # written by  Rafael Brito originally created on 09/27/2012
 # see README.md for revision history
+#set -x
 
 MYDIR=/tmp
-TODAY=`date +%y%m%d`
-MYNAME="CATE CitiHPC Forensic v2.3"
-mkdir ${MYDIR}/citihpc-forensic 2>/dev/null
-cd ${MYDIR}/citihpc-forensic
-mkdir $TODAY 2>/dev/null
-cd ${MYDIR}/citihpc-forensic/${TODAY}
 
-MYHOST=`hostname`
-NOW=`date +%y%m%d-%H%M%S`
+function usage {
 
-LOGSTATIC="static-citihpc-forensic".$MYHOST.$NOW
+	echo ""
+	echo "Usage: $0 <number of samples to collect> [<interval in seconds>]"
+	echo ""
+	echo "Example forensics collecting 100 samples of data with 10 second interval:"
+	echo ""
+	echo "	$0 100 10"
+	echo ""
+	echo "The second parameter is optional with the default interval of 2 seconds."
+	exit 1
 
-echo "Info: $MYNAME Collecting basic information from $MYHOST on $TODAY at $NOW..." >> $LOGSTATIC
-echo "Info: $MYNAME Collecting basic information from $MYHOST on $TODAY at $NOW..."
+}
+
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]
+then
+	usage
+
+fi
+
 
 # Getting the number of interactions from command line
 # by default it will be 100 interations
 if [ -z "$1" ]
 then
-	TOTALLOOP=100
-	echo "Info: No parameters passed, by default it will run $TOTALLOOP interactions without sleep intervals ..."
+	echo ""
+	echo "Error: No parameters passed."
+	usage
 else
+	if ! [[ "$1" != *[!0-9]* ]]; then
+		echo "Error: A number is expected."
+		usage
+	fi
 	TOTALLOOP=$1
 	echo "Info: forensic will run $TOTALLOOP interactions ..."
 
@@ -35,6 +48,21 @@ else
 	fi
 
 fi
+
+TODAY=`date +%y%m%d`
+MYNAME="CATE CitiHPC Forensic v2.3"
+MYHOST=`hostname`
+NOW=`date +%y%m%d-%H%M%S`
+
+mkdir ${MYDIR}/citihpc-forensic 2>/dev/null
+cd ${MYDIR}/citihpc-forensic
+mkdir $TODAY 2>/dev/null
+cd ${MYDIR}/citihpc-forensic/${TODAY}
+
+LOGSTATIC="static-citihpc-forensic".$MYHOST.$NOW
+
+echo "Info: $MYNAME Collecting basic information from $MYHOST on $TODAY at $NOW..." >> $LOGSTATIC
+echo "Info: $MYNAME Collecting basic information from $MYHOST on $TODAY at $NOW..."
 
 
 echo "Info: uname -a ... `date`" >> $LOGSTATIC
@@ -48,6 +76,8 @@ echo "Info: end of red hat release ... " >> $LOGSTATIC
 echo "Info: dmidecode machine type - dmidecode | grep -i product ... `date`" >> $LOGSTATIC
 dmidecode | grep -i product >> $LOGSTATIC
 echo "Info: end of dmidecode machine type ... " >> $LOGSTATIC
+
+set +x
 
 echo "Info: fdisk -l ... `date`" >> $LOGSTATIC
 fdisk -l 2>/dev/null >> $LOGSTATIC
@@ -218,6 +248,7 @@ if [ -e /opt/hp/conrep/conrep ]; then
 	CONREPXML="conrepxml-citihpc-forensic".$MYHOST.$NOW
 	echo "Info: /opt/hp/conrep/conrep -x /opt/hp/conrep/conrep.xml -s -f $CONREPXML ... `date`" >> $LOGSTATIC
 	/opt/hp/conrep/conrep -x /opt/hp/conrep/conrep.xml -s -f $CONREPXML >> $LOGSTATIC 2>>$LOGSTATIC
+	cat $CONREPXML >> $LOGSTATIC 2>/dev/null
 	echo "Info: end of /opt/hp/conrep/conrep -x /opt/hp/conrep/conrep.xml -s -f $CONREPXML ... `date`" >> $LOGSTATIC
 fi
 

@@ -56,4 +56,7 @@ written by  Rafael Brito originally created on 09/27/2012
 2.2 - suppress errors from RHEL5 execution
 2.3 - Added ntp.conf, yum.conf and grub.conf. rpm -qa is sorted for better parsing. 09/02/2014.
 	Added modprobe.conf and all files under /etc/modprobe.d
+	Added lsof in dynamic piece. I cant believe I have not added lsof before.
+	Added a usage function and no default loops now.
+	cat conrep xml in the logstatic
 ```
