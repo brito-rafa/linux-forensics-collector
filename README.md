@@ -59,4 +59,5 @@ written by  Rafael Brito originally created on 09/27/2012
 	Added lsof in dynamic piece. I cant believe I have not added lsof before.
 	Added a usage function and no default loops now.
 	cat conrep xml in the logstatic
+	added cset, numactl
 ```

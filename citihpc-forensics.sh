@@ -272,6 +272,19 @@ if [ -e /usr/lpp/mmfs/bin/mmlscluster ]; then
 	echo "Info: end of mmlsnsd ..." >> $LOGSTATIC
 fi
 
+echo "Info: checking cset ..." >> $LOGSTATIC
+if [ -e /usr/bin/cset ]; then
+	echo "Info: cset set -l ... `date`" >> $LOGSTATIC
+	cset set -l >> $LOGSTATIC
+	echo "Info: end of cset set -l ..." >> $LOGSTATIC
+	echo "Info: ls /cpusets/ ... `date`" >> $LOGSTATIC
+	ll /cpusets/ >> $LOGSTATIC
+	echo "Info: end of ls /cpusets/ ..." >> $LOGSTATIC
+	echo "Info: numactl --show ... `date`" >> $LOGSTATIC
+	numactl --show >> $LOGSTATIC
+	echo "Info: end of numactl --show ..." >> $LOGSTATIC
+fi
+
 echo "Info: end of static collection at `date` " >> $LOGSTATIC
 echo "Info: end of static collection at `date` "
 echo "Info: Created $LOGSTATIC file on ${MYDIR}/citihpc-forensic/${TODAY}"
