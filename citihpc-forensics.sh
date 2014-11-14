@@ -285,6 +285,22 @@ if [ -e /usr/bin/cset ]; then
 	echo "Info: end of numactl --show ..." >> $LOGSTATIC
 fi
 
+# IBM raid stuff
+echo "Info: checking if MegaCLI64 exists ..." >> $LOGSTATIC
+if [ -e /opt/MegaRAID/MegaCli/MegaCLI64 ]; then
+	echo "Info: /opt/MegaRAID/MegaCli/MegaCLI64 -AdpAllInfo -aALL  ... `date`" >> $LOGSTATIC
+	/opt/MegaRAID/MegaCli/MegaCLI64 -AdpAllInfo -aALL 2>>$LOGSTATIC >> $LOGSTATIC
+	echo "Info: end of /opt/MegaRAID/MegaCli/MegaCLI64 -AdpAllInfo -aALL ..." >> $LOGSTATIC
+	echo "Info: /opt/MegaRAID/MegaCli/MegaCLI64 -LDInfo -LALL -aALL  ... `date`" >> $LOGSTATIC
+	/opt/MegaRAID/MegaCli/MegaCLI64 -LDInfo -LALL -aALL 2>>$LOGSTATIC >> $LOGSTATIC
+	echo "Info: end of /opt/MegaRAID/MegaCli/MegaCLI64 -LDInfo -LALL -aALL ..." >> $LOGSTATIC
+fi
+
+# HP raid (if binary is on the path)
+echo "Info: hpacucli ctrl all show config detail ... `date`" >> $LOGSTATIC
+hpacucli ctrl all show config detail 2>>$LOGSTATIC >> $LOGSTATIC
+echo "Info: end of hpacucli ctrl all show config detail ... `date`" >> $LOGSTATIC
+
 echo "Info: end of static collection at `date` " >> $LOGSTATIC
 echo "Info: end of static collection at `date` "
 echo "Info: Created $LOGSTATIC file on ${MYDIR}/citihpc-forensic/${TODAY}"
