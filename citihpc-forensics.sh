@@ -287,13 +287,13 @@ fi
 
 # IBM raid stuff
 echo "Info: checking if MegaCLI64 exists ..." >> $LOGSTATIC
-if [ -e /opt/MegaRAID/MegaCli/MegaCLI64 ]; then
-	echo "Info: /opt/MegaRAID/MegaCli/MegaCLI64 -AdpAllInfo -aALL  ... `date`" >> $LOGSTATIC
-	/opt/MegaRAID/MegaCli/MegaCLI64 -AdpAllInfo -aALL 2>>$LOGSTATIC >> $LOGSTATIC
-	echo "Info: end of /opt/MegaRAID/MegaCli/MegaCLI64 -AdpAllInfo -aALL ..." >> $LOGSTATIC
-	echo "Info: /opt/MegaRAID/MegaCli/MegaCLI64 -LDInfo -LALL -aALL  ... `date`" >> $LOGSTATIC
-	/opt/MegaRAID/MegaCli/MegaCLI64 -LDInfo -LALL -aALL 2>>$LOGSTATIC >> $LOGSTATIC
-	echo "Info: end of /opt/MegaRAID/MegaCli/MegaCLI64 -LDInfo -LALL -aALL ..." >> $LOGSTATIC
+if [ -e /opt/MegaRAID/MegaCli/MegaCli64 ]; then
+	echo "Info: /opt/MegaRAID/MegaCli/MegaCli64 -AdpAllInfo -aALL  ... `date`" >> $LOGSTATIC
+	/opt/MegaRAID/MegaCli/MegaCli64 -AdpAllInfo -aALL 2>>$LOGSTATIC >> $LOGSTATIC
+	echo "Info: end of /opt/MegaRAID/MegaCli/MegaCli64 -AdpAllInfo -aALL ..." >> $LOGSTATIC
+	echo "Info: /opt/MegaRAID/MegaCli/MegaCli64 -LDInfo -LALL -aALL  ... `date`" >> $LOGSTATIC
+	/opt/MegaRAID/MegaCli/MegaCli64 -LDInfo -LALL -aALL 2>>$LOGSTATIC >> $LOGSTATIC
+	echo "Info: end of /opt/MegaRAID/MegaCli/MegaCli64 -LDInfo -LALL -aALL ..." >> $LOGSTATIC
 fi
 
 # HP raid (if binary is on the path)
