@@ -427,6 +427,10 @@ do
 	echo "Info: /proc/meminfo ... `date`" >> $LOG
 	cat /proc/meminfo >> $LOG
 	echo "Info: end of /proc/meminfo ..." >> $LOG
+
+	echo "Info: /proc/buddyinfo ... `date`" >> $LOG
+	cat /proc/buddyinfo >> $LOG
+	echo "Info: end of /proc/buddyinfo ..." >> $LOG
 	
 	echo "Info:  mpstat -P ALL ... `date`" >> $LOG
 	mpstat -P ALL >> $LOG

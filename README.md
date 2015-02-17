@@ -61,4 +61,5 @@ written by  Rafael Brito originally created on 09/27/2012
 	cat conrep xml in the logstatic
 	added cset, numactl
 2.4 - Added RAID info: MegaCLI64 (IBM) and hpacucli (HP) - 11/14/2014
+2.5 - Added buddyinfo as per subodh feedback - 02/17/2015
 ```
