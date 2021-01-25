@@ -66,4 +66,5 @@ written by  Rafael Brito originally created on 09/27/2012
 2.5 - Added buddyinfo as per subodh feedback - 02/17/2015
 		Added slabinfo - 03/16/2015
 		(slabinfo gives the output of slabtop command, Linux manages the memory allocation in slabs on top of memory pages. This gives per object memory consumption and allocation, for ex. if a GPFS module has a in-memory object, we can detect the memory behavior of it; which might help in debugging the performance issues)
+2.6 - making it public, never meant to be private use
 ```
