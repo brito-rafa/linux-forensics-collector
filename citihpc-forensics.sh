@@ -1,4 +1,3 @@
-# CitiHPC-forensic.sh
 # written by  Rafael Brito originally created on 09/27/2012
 # see README.md for revision history
 #set -x
