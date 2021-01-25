@@ -1,9 +1,11 @@
 linux-forensics-collector
 ===========================
 
-This is the repo for the CitiHPC Forensics Collector.
+This is the repo for the Linux Forensics Collector.
 
 This tool collects static and dynamic data from a server. The dynamic data is collected by a user rdefined interval and interactions.
+
+It uses standards linux command lines for such, not requiring any especial software. There is an analyzer written on perl - but this is only the collector.
 
 
 revision history
