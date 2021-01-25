@@ -49,7 +49,7 @@ else
 fi
 
 TODAY=`date +%y%m%d`
-MYNAME="Linux Forensic v2.3"
+MYNAME="Linux Forensic v2.6"
 MYHOST=`hostname`
 NOW=`date +%y%m%d-%H%M%S`
 
