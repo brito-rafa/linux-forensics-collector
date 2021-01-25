@@ -49,16 +49,16 @@ else
 fi
 
 TODAY=`date +%y%m%d`
-MYNAME="CATE CitiHPC Forensic v2.3"
+MYNAME="Linux Forensic v2.3"
 MYHOST=`hostname`
 NOW=`date +%y%m%d-%H%M%S`
 
-mkdir ${MYDIR}/citihpc-forensic 2>/dev/null
-cd ${MYDIR}/citihpc-forensic
+mkdir ${MYDIR}/linux-forensic 2>/dev/null
+cd ${MYDIR}/linux-forensic
 mkdir $TODAY 2>/dev/null
-cd ${MYDIR}/citihpc-forensic/${TODAY}
+cd ${MYDIR}/linux-forensic/${TODAY}
 
-LOGSTATIC="static-citihpc-forensic".$MYHOST.$NOW
+LOGSTATIC="static-linux-forensic".$MYHOST.$NOW
 
 echo "Info: $MYNAME Collecting basic information from $MYHOST on $TODAY at $NOW..." >> $LOGSTATIC
 echo "Info: $MYNAME Collecting basic information from $MYHOST on $TODAY at $NOW..."
@@ -244,7 +244,7 @@ fi
 
 echo "Info: checking if conrep (HP bios util) exists ..." >> $LOGSTATIC
 if [ -e /opt/hp/conrep/conrep ]; then
-	CONREPXML="conrepxml-citihpc-forensic".$MYHOST.$NOW
+	CONREPXML="conrepxml-linux-forensic".$MYHOST.$NOW
 	echo "Info: /opt/hp/conrep/conrep -x /opt/hp/conrep/conrep.xml -s -f $CONREPXML ... `date`" >> $LOGSTATIC
 	/opt/hp/conrep/conrep -x /opt/hp/conrep/conrep.xml -s -f $CONREPXML >> $LOGSTATIC 2>>$LOGSTATIC
 	cat $CONREPXML >> $LOGSTATIC 2>/dev/null
@@ -302,7 +302,7 @@ echo "Info: end of hpacucli ctrl all show config detail ... `date`" >> $LOGSTATI
 
 echo "Info: end of static collection at `date` " >> $LOGSTATIC
 echo "Info: end of static collection at `date` "
-echo "Info: Created $LOGSTATIC file on ${MYDIR}/citihpc-forensic/${TODAY}"
+echo "Info: Created $LOGSTATIC file on ${MYDIR}/linux-forensic/${TODAY}"
 echo ""
 
 echo "Info: Starting dynamic collection at `date` - $TOTALLOOP Loops"
@@ -312,7 +312,7 @@ COUNTER=1
 while [ $COUNTER -le $TOTALLOOP ] ;
 do
 	NOW=`date +%y%m%d-%H%M%S`
-	LOG="dynamic-citihpc-forensic".$MYHOST.$NOW
+	LOG="dynamic-linux-forensic".$MYHOST.$NOW
 	echo "Info: Beginning interaction $COUNTER of total of $TOTALLOOP - $MYNAME $TODAY at $NOW..." >> $LOG
 	echo "Info: Beginning interaction $COUNTER of total of $TOTALLOOP - $MYNAME $TODAY at `date`..."
 	echo "Press Cntrl^C in meanwhile if you want to stop the script..."
@@ -477,7 +477,7 @@ do
 	echo "Info: end of interaction at $MYEND ..." >> $LOG
 	gzip $LOG
 	echo "Info: end of interaction $COUNTER of total of $TOTALLOOP - $MYNAME $TODAY at `date` "
-	echo "Info: Created $LOG file on ${MYDIR}/citihpc-forensic/${TODAY}"
+	echo "Info: Created $LOG file on ${MYDIR}/linux-forensic/${TODAY}"
 	let COUNTER=COUNTER+1
 	echo ""	
 	
